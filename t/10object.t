@@ -36,7 +36,7 @@ my %tests = (
         [ 'is',     'ean13',        '9780571239566'     ],
         [ 'is',     'title',        'Touching from a Distance'  ],
         [ 'is',     'author',       'Deborah Curtis'    ],
-        [ 'is',     'publisher',    'Faber and Faber'   ],
+        [ 'like',   'publisher',    qr!Faber (&|and) Faber!     ],
         [ 'is',     'pubdate',      '04 Oct 2007'       ],
         [ 'is',     'binding',      'Paperback'         ],
         [ 'is',     'pages',        240                 ],
@@ -121,7 +121,7 @@ sub pingtest {
 
     eval { system($cmd) }; 
     if($@) {                # can't find ping, or wrong arguments?
-        diag();
+        diag($@);
         return 1;
     }
 
