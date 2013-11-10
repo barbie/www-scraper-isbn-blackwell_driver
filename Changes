@@ -2,6 +2,8 @@ Revision history for WWW-Scraper-ISBN-Blackwell_Driver
 ======================================================
 
         - added git repository links to metadata.
+        - live data updated.
+        - added missing pre-requisite, Data::Dumper.
 
 0.04    2013-03-10
         - added isbn-check.pl to examples.
