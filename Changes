@@ -1,6 +1,8 @@
 Revision history for WWW-Scraper-ISBN-Blackwell_Driver
 ======================================================
 
+        - fixed distribution name in META.
+
 0.06    2014-03-09
         - site updated, new image links.
 

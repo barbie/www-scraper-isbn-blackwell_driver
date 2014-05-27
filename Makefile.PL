@@ -8,7 +8,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     AUTHOR              => 'Barbie <barbie@cpan.org>',
-    NAME                => 'WWW::Scraper::ISBN::Blackwell_Driver',
+    NAME                => 'WWW-Scraper-ISBN-Blackwell_Driver',
     VERSION_FROM        => 'lib/WWW/Scraper/ISBN/Blackwell_Driver.pm',
     ABSTRACT            => q[Search driver for Blackwell's online book catalog],
     NO_META             => 1,
