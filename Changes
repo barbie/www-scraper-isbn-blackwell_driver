@@ -4,6 +4,7 @@ Revision history for WWW-Scraper-ISBN-Blackwell_Driver
         - fixed distribution name in META.
         - upgrade to WWW-Scraper-ISBN-1.00.
         - conversion routines now moved to WWW::Scraper::ISBN::Driver.
+        - conversion tests no longer required.
 
 0.06    2014-03-09
         - site updated, new image links.
