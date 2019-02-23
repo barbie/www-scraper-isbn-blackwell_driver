@@ -118,13 +118,13 @@ sub search {
     my $data;
     ($data->{isbn13})       = $html =~ m!<meta property="book:isbn"\s+content="(\d+)"\s+/>!si;
     ($data->{title})        = $html =~ m!<meta property="og:title"\s+content="([^"]+)"\s+/>!si;
-    ($data->{author})       = $html =~ m!<p class="product__author">\s*<a[^>]+>([^<]+)</a>!si;
+    ($data->{author})       = $html =~ m!<p class="product__author"[^>]*>\s*<a[^>]+>([^<]+)</a>!si;
     ($data->{binding})      = $html =~ m!<p class="product__format">\s*<span itemprop="bookFormat" >([^<\(]+)!si;
-    ($data->{publisher})    = $html =~ m!<td>Publisher:</td>\s*<td itemprop="publisher">\s*<a[^>]+>([^<]+)</a>!si;
-    ($data->{pubdate})      = $html =~ m!<td>Pub date:</td>\s*<td itemprop="datePublished" content="([^"]+)">!si;
+    ($data->{publisher})    = $html =~ m!<td>Publisher:</td>\s*<td itemprop="publisher"[^>]*>\s*<a[^>]+>\s*<span[^>]+>([^<]+)</span>\s*</a>!si;
+    ($data->{pubdate})      = $html =~ m!<td>Pub date:</td>\s*<td itemprop="datePublished"[^>]*>([^<]+)</td>!si;
     ($data->{description})  = $html =~ m!<meta property="og:description"\s+content="([^"]+)"\s+/>!si;
     ($data->{pages})        = $html =~ m!<td>Number of pages:</td>\s*<td itemprop="numberOfPages">(\d+)</td>!si;
-    ($data->{weight})       = $html =~ m!<td>Weight:</td>\s*<td itemprop="weight">(\d+)g</td>!si;
+    ($data->{weight})       = $html =~ m!<td>Weight:</td>\s*<td(?: itemprop="weight")?>(\d+)g</td>!si;
     ($data->{height})       = $html =~ m!<td>Height:</td>\s*<td>(\d+)mm</td>!si;
     ($data->{width})        = $html =~ m!<td>Width:</td>\s*<td>(\d+)mm</td>!si;
     ($data->{image})        = $html =~ m!<meta property="og:image"\s+content="([^"]+)"\s+/>!si;
@@ -132,6 +132,7 @@ sub search {
     $data->{image}     =~ s!https:///!https://bookshop.blackwell.co.uk/!;
     $data->{thumb}     = $data->{image};
     $data->{isbn10}    = $isbn10;
+    $data->{author}    =~ s/\s*\(author\)//si;
     $data->{publisher} =~ s/&#0?39;/'/g;
 
 #use Data::Dumper;
