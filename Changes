@@ -3,6 +3,7 @@ Revision history for WWW-Scraper-ISBN-Blackwell_Driver
 
         - fix suggestd by kritika.io.
         - catch warnings.
+        - catch additional website unavailable message.
 
 0.11    2019-02-23
         - updated patterns following site layout changes.

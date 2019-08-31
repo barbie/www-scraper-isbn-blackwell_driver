@@ -108,6 +108,9 @@ sub search {
     # The Book page
     my $html = $mech->content();
 
+    return $self->handler("Blackwell's website appears to be unavailable.")
+        if($html =~ m!Blocked IP Address due to Suspicious Activity!si);
+
     return $self->handler("Failed to find that book on the Blackwell website. [$isbn]")
         if($html =~ m!Sorry, there are no results for!si);
     
