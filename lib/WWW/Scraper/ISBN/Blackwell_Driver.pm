@@ -113,6 +113,7 @@ sub search {
     
     $html =~ s/&amp;/&/g;
     $html =~ s/&nbsp;/ /g;
+    $html =~ s/&ndash;/-/g;
 #print STDERR "\n# html=[\n$html\n]\n";
 
     my $data;
@@ -129,11 +130,11 @@ sub search {
     ($data->{width})       = $html =~ m!<td>Width:</td>\s*<td>(\d+)mm</td>!si;
     ($data->{image})       = $html =~ m!<meta property="og:image"\s+content="([^"]+)"\s+/>!si;
 
-    $data->{image}     =~ s!https:///!https://bookshop.blackwell.co.uk/!;
+    $data->{image}     =~ s!https:///!https://bookshop.blackwell.co.uk/! if($data->{image});
     $data->{thumb}     = $data->{image};
     $data->{isbn10}    = $isbn10;
-    $data->{author}    =~ s/\s*\(author\)//si;
-    $data->{publisher} =~ s/&#0?39;/'/g;
+    $data->{author}    =~ s/\s*\(author\)//si if($data->{author});
+    $data->{publisher} =~ s/&#0?39;/'/g if($data->{publisher});
 
 #use Data::Dumper;
 #print STDERR "\n# " . Dumper($data);
