@@ -170,6 +170,7 @@ sub search {
         'weight'      => $data->{weight},
         'height'      => $data->{height},
         'width'       => $data->{width},
+        'html'        => $html
     };
 
 #use Data::Dumper;
